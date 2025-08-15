@@ -1,18 +1,14 @@
-\documentclass[twocolumn,apj,numberedappendix,appendixfloats]{openjournal}
-% Available options:
-% [twocolumn] - two-column mode
-% [onecolumn] - (default) main text in one-column mode
-% [apj]       - typeset in the style of ApJ.
-% [apjl]      - (default) typeset in the style of ApJ Letters 
-% [tighten]   - some adjustments to approximate grid typesetting
-% [numberedappendix]   - number appendix sections as A, B, etc
-% [appendixfloats]  - use separate numbering for floats within appendix
-% [twocolappendix]  - make appendix in two-col mode in a two-col paper
+\documentclass[fleqn,usenatbib]{mnras}
 
 
 %%%%% PACKAGES %%%%%
+\usepackage{newtxtext,newtxmath}
+\DeclareRobustCommand{\VAN}[3]{#2}
+\let\VANthebibliography\thebibliography
+\def\thebibliography{\DeclareRobustCommand{\VAN}[3]{##3}\VANthebibliography}
+
 % Optional useful packages
-\usepackage{newtxtext,newtxmath,amsmath}
+\usepackage{amsmath}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{enumitem}
@@ -32,25 +28,6 @@
 }
 \definecolor{linkcolor}{rgb}{0.0,0.3,0.5}
 
-
-% \usepackage{newtxtext,newtxmath,amsmath}
-% \usepackage{xcolor}
-% \usepackage{textgreek}
-% \usepackage[utf8]{inputenc}
-% \usepackage[english]{babel}
-% \usepackage{hyperref}
-% \hypersetup{
-%     unicode, 
-%     colorlinks=true,
-%     linkcolor=linkcolor,
-%     citecolor=linkcolor,
-%     filecolor=linkcolor,
-%     urlcolor=linkcolor,
-% }
-% \usepackage{color,colortbl}
-% \definecolor{linkcolor}{rgb}{0.0,0.3,0.5}
-% \usepackage{orcidlink}
-
 %%%%% COMMANDS %%%%%
 % Optional useful commands
 
@@ -60,22 +37,30 @@
 \newcommand{\SB}[1]{{\textcolor{purple}{SB: #1}}}
 \newcommand{\comment}[1]{\textcolor{lightgray}{#1}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%
+% Title of the paper, and the short title which is used in the headers.
+\title[Short Title]{Interesting and descriptive title of your research}
+
+\author[F. Author et al.]{FirstName LastName,$^{1}$\thanks{E-mail: youremail@anu.edu.au}
+and SecondAuthor$^{2}$
+%Sven Buder,$^{1,2}$\thanks{E-mail: sven.buder@anu.edu.au}\thanks{Australian Research Council DECRA Fellow}\orcidlink{0000-0002-4031-8553}
+\\
+% List of institutions
+$^{1}$Research School of Astronomy and Astrophysics, Australian National University, Canberra, ACT 2611, Australia\\
+$^{2}$ARC Centre of Excellence for All Sky Astrophysics in 3 Dimensions (ASTRO 3D), Australia
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2025}
+
+% Don't change these lines
 \begin{document}
-\title{Interesting and descriptive title of your research}
-
-\author{\vspace{-1.5cm}YOUR NAME HERE$^{1}$\orcidlink{0000-0000-0000-0000}}
-
-% Adding another author would go like:
-%\author{Sven Buder$^{1,2,*}$\orcidlink{0000-0002-4031-8553}}
-
-\affiliation{$^{1}$Research School of Astronomy and Astrophysics, Australian National University, Canberra, ACT 2611, Australia}
-% \affiliation{$^{2}$ARC Centre of Excellence for All Sky Astrophysics in 3 Dimensions (ASTRO 3D), Australia}
-
-
-\thanks{E-mail: youremail@anu.edu.au}
-%\thanks{$^*$Australian Research Council DECRA Fellow},
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
 
 \begin{abstract}
 The abstract should condense the main content of the paper to less than 1920 characters (with spaces) and make the reader want to actually read the paper. Summarize your work with at least one sentence for: context (bigger picture - to get people interested), aims (to tell people what you want to do), methods (to tell people how you do it), results (to give people important results, like numbers or rejected hypotheses), and conclusions (to explain the impact, that is, what that means for the bigger picture problem).
@@ -83,10 +68,8 @@ The abstract should condense the main content of the paper to less than 1920 cha
 
 % Write your keywords here
 \begin{keywords}
-    {Choose up to 6 keywords from \href{https://academic.oup.com/DocumentLibrary/mnras/keywords.pdf}{here} and write them like: keyword1 -- keyword2.}
+Choose up to 6 keywords from \href{https://academic.oup.com/DocumentLibrary/mnras/keywords.pdf}{here} and write them like: keyword1 -- keyword2.
 \end{keywords}
-
-\maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -320,4 +303,7 @@ All code to reproduce the analysis and figures can be publicly accessed via \url
 
 %\end{appendix}
 
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
 \end{document}
